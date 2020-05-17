@@ -1,0 +1,6 @@
+distance: [1, 20, 40, 60]
+mcs: [0, 3, 6]
+nWifi: 1
+useRts: False
+useShortGuardInterval: False
+randomChannel: [False, True]
