@@ -76,9 +76,7 @@
   The ~sem run~ command can be used to run simulations:
 
   #+begin_src bash
-    cd ..
     sem run --help
-    sem run
   #+end_src
 
   Use [Value1, Value2, ...] to specify multiple values.
