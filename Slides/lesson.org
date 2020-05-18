@@ -59,16 +59,21 @@
 
 * What is SEM?
 
-  With ~./waf --run script~ you will only run a single simulation.
-
-  SEM allows you to:
-  - Run multiple simulations in parallel
+  SEM is a Python library and program that allows you to:
+  - Run multiple simulations in parallel from the command line
   - Export results to various formats (folders, MATLAB)
   - Perform both simulations and analysis from the same Python script
 
+  SEM is already installed in your system:
+  #+begin_src bash
+    sem --help
+  #+end_src
+
 * Running the program with SEM
 
-  Try it! /Make sure to be in the ~sem-lab~ folder for this./
+  Try it! /Make sure to be in the ~sem-lab~ folder for this (~cd ..~)./
+
+  The ~sem run~ command can be used to run simulations:
 
   #+begin_src bash
     cd ..
@@ -76,44 +81,49 @@
     sem run
   #+end_src
 
+  Use [Value1, Value2, ...] to specify multiple values.
+
 * Viewing results
+
+  The ~sem view~ command can be used to view results of previously run
+  simulations:
 
   #+begin_src bash
     sem view --help
-    sem view
   #+end_src
-
-* Simulating multiple parameter combinations
-
-  #+begin_src bash
-    sem run
-  #+end_src
-
-  Use [Value1, Value2, ...] to specify multiple values.
 
 * Exporting results
 
+  The export command can be used to export results:
   #+begin_src bash
     sem export --help
+  #+end_src
+
+  Let's export results to a nested folder structure:
+  #+begin_src bash
     sem export results-directory
   #+end_src
 
-* Plotting after MATLAB export
+* Exporting results to MATLAB and plotting
+
+  Clean up your results folder with the ~rm -r res~ command.
+
+  Run simulations using a pre-specified parameter space:
 
   #+begin_src bash
-    rm -r res
     sem run --parameters params
   #+end_src
 
-  - distance: [10, 20, 40, 60]
-  - mcs: [0, 3, 6]
-  - nWifi: 1
-  - useRts: False
-  - useShortGuardInterval: False
-  - randomChannel: False
+  Export results to MATLAB data structure:
 
   #+begin_src bash
-  sem export results.mat --results-dir res
+    sem export results.mat --results-dir res
+  #+end_src
+
+  Run the MATLAB script to plot results:
+
+  #+begin_src bash
+    octave --persist wifiplot.m
   #+end_src
 
 * Exercise
