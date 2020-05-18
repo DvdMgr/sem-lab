@@ -2,16 +2,13 @@
 load('results.mat');
 results = squeeze(cell2mat(cellfun(@(s) s.stdout, results, 'uni', 0)));
 
-% Select how many runs to keep
-runs = 3;
-results = results(:, :, 1:runs);
-
-% Only plot the mean
-figure;
-mean_throughput = mean(results, 3);
-plot([1, 20, 40, 60], mean_throughput);
-
 % Plot 95% confidence interval
 figure;
+mean_throughput = mean(results, 3);
 std_throughput = std(results, 0, 3);
-errorbar(mean_throughput, 1.96 * std_throughput / sqrt(runs));
+errorbar(repmat([10, 20, 40, 60].', 1, 3), ...
+         mean_throughput, ...
+         1.96 * std_throughput / sqrt(size(results)(3)));
+legend('MCS 0', 'MCS 3', 'MCS 6');
+xlabel('Distance [m]')
+ylabel('Throughput [Mbps]')

@@ -1,4 +1,4 @@
-distance: [1, 20, 40, 60]
+distance: [10, 20, 40, 60]
 mcs: [0, 3, 6]
 nWifi: 1
 useRts: False
