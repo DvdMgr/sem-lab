@@ -1,3 +1,5 @@
+graphics_toolkit gnuplot;
+
 % Load results from the file
 load('results.mat');
 results = squeeze(cell2mat(cellfun(@(s) s.stdout, results, 'uni', 0)));
